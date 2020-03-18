@@ -2,14 +2,14 @@
   <div>
     <header>
         <nav>
-            <input type="checkbox" id="checkbox-menu">
+            <input type="checkbox" id="checkbox-menu" v-model="checkbox_checked">
             <label for="checkbox-menu">
                 <ul class="menu touch">
-                  <li><router-link to="/articles" v-bind:class="{ active: $route.name == 'articles' }">Статьи</router-link></li>
-                  <li><router-link to="/news" v-bind:class="{ active: $route.name == 'news' }">Новости</router-link></li>
-                  <li><router-link to="/lessons" v-bind:class="{ active: $route.name == 'lessons' }">Видеоуроки</router-link></li>
-                  <li><router-link to="/tasks" v-bind:class="{ active: $route.name == 'tasks' }">Задачи</router-link></li>
-                  <li><router-link to="/login" class="login" v-bind:class="{ active: $route.name == 'login' }">Войти</router-link></li>
+                  <li><router-link v-on:click.native="checkbox_checked = false" to="/articles" v-bind:class="{ active: $route.name == 'articles' }">Статьи</router-link></li>
+                  <li><router-link v-on:click.native="checkbox_checked = false" to="/news" v-bind:class="{ active: $route.name == 'news' }">Новости</router-link></li>
+                  <li><router-link v-on:click.native="checkbox_checked = false" to="/lessons" v-bind:class="{ active: $route.name == 'lessons' }">Видеоуроки</router-link></li>
+                  <li><router-link v-on:click.native="checkbox_checked = false" to="/tasks" v-bind:class="{ active: $route.name == 'tasks' }">Задачи</router-link></li>
+                  <li><router-link v-on:click.native="checkbox_checked = false" to="/login" class="login" v-bind:class="{ active: $route.name == 'login' }">Войти</router-link></li>
                 </ul>
                 <span class="toogle">☰</span>
             </label>
@@ -31,7 +31,12 @@
 
 <script>
 export default {
-  name: "app"
+  name: "app",
+  data() {
+      return {
+          checkbox_checked: false
+      }
+  }
 };
 </script>
 
@@ -186,6 +191,12 @@ footer {
     }
     .menu li a.contacts {
         margin-right: 0;
+    }
+    .menu li a.login,
+    .menu li a.login.active,
+    .menu li a.login:hover {
+        background: #fff;
+        color: #000;
     }
     
 }
