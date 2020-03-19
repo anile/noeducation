@@ -36,6 +36,12 @@ export default {
       return {
           checkbox_checked: false
       }
+  },
+  mounted() {
+      let closeMenu = () => {
+          this.checkbox_checked = false;
+      }
+      document.addEventListener('click', closeMenu);
   }
 };
 </script>
