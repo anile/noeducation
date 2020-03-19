@@ -5,13 +5,13 @@
             <input type="checkbox" id="checkbox-menu" v-model="checkbox_checked">
             <label for="checkbox-menu">
                 <ul class="menu touch">
-                  <li><router-link v-on:click.native="checkbox_checked = false" to="/articles" v-bind:class="{ active: $route.name == 'articles' }">Статьи</router-link></li>
-                  <li><router-link v-on:click.native="checkbox_checked = false" to="/news" v-bind:class="{ active: $route.name == 'news' }">Новости</router-link></li>
-                  <li><router-link v-on:click.native="checkbox_checked = false" to="/lessons" v-bind:class="{ active: $route.name == 'lessons' }">Видеоуроки</router-link></li>
-                  <li><router-link v-on:click.native="checkbox_checked = false" to="/tasks" v-bind:class="{ active: $route.name == 'tasks' }">Задачи</router-link></li>
-                  <li><router-link v-on:click.native="checkbox_checked = false" to="/login" class="login" v-bind:class="{ active: $route.name == 'login' }">Войти</router-link></li>
+                  <li><router-link to="/articles" v-bind:class="{ active: $route.name == 'articles' }">Статьи</router-link></li>
+                  <li><router-link to="/news" v-bind:class="{ active: $route.name == 'news' }">Новости</router-link></li>
+                  <li><router-link to="/lessons" v-bind:class="{ active: $route.name == 'lessons' }">Видеоуроки</router-link></li>
+                  <li><router-link to="/tasks" v-bind:class="{ active: $route.name == 'tasks' }">Задачи</router-link></li>
+                  <li><router-link to="/login" class="login" v-bind:class="{ active: $route.name == 'login' }">Войти</router-link></li>
                 </ul>
-                <span class="toogle">☰</span>
+                <span class="toogle" id="open_menu_button">☰</span>
             </label>
         </nav>
     </header>
@@ -38,7 +38,8 @@ export default {
       }
   },
   mounted() {
-      let closeMenu = () => {
+      let closeMenu = (event) => {
+          if (event.target.id == 'open_menu_button') return;
           this.checkbox_checked = false;
       }
       document.addEventListener('click', closeMenu);
@@ -76,7 +77,7 @@ nav {
 }
 #checkbox-menu, 
 .toogle {
-    display: none;
+    display: block;
 }
 .menu {
     padding: 0;
