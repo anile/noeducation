@@ -77,7 +77,7 @@ nav {
 }
 #checkbox-menu, 
 .toogle {
-    display: block;
+    display: none;
 }
 .menu {
     padding: 0;
