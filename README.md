@@ -6,4 +6,4 @@ The service is created throught vue-cli. Commands:
 
 To run service from the repo use commands:
 - npm install
-- npm run serve / build
+- npm run serve / npm run build + node server.js

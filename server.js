@@ -4,15 +4,14 @@ let fs = require('fs');
 http.createServer(function (req, res) {
 
     switch (req.url) {
-        case '/css/app.8e2f0ded.css':
+        case req.url.match(/\/css\/app.[0-9a-f]{8}.css/g) && req.url.match(/\/css\/app.[0-9a-f]{8}.css/g)[0]:
             res.setHeader('Content-Type', "text/css");
-            sendFile('dist/css/app.8e2f0ded.css', res);
+            sendFile('dist' + req.url, res);
             break;
 
-
-        case '/js/app.c8a82b98.js':
+        case req.url.match(/\/js\/app.[0-9a-f]{8}.js/g) && req.url.match(/\/js\/app.[0-9a-f]{8}.js/g)[0]:
             res.setHeader('Content-Type', "text/javascript");
-            sendFile('dist/js/app.c8a82b98.js', res);
+            sendFile('dist' + req.url, res);
             break;
 
         case '/js/chunk-vendors.cafad179.js':
@@ -20,9 +19,9 @@ http.createServer(function (req, res) {
             sendFile('dist/js/chunk-vendors.cafad179.js', res);
             break;
 
-        case '/js/app.c8a82b98.js.map':
+        case req.url.match(/\/js\/app.[0-9a-f]{8}.js.map/g) && req.url.match(/\/js\/app.[0-9a-f]{8}.js.map/g)[0]:
             res.setHeader('Content-Type', "application/json");
-            sendFile('dist/js/app.c8a82b98.js.map', res);
+            sendFile('dist' + req.url, res);
             break;
 
         case '/js/chunk-vendors.cafad179.js.map':
@@ -30,7 +29,7 @@ http.createServer(function (req, res) {
             sendFile('dist/js/chunk-vendors.cafad179.js.map', res);
             break;
 
-        case '/fonts/dirt.14fd38ae.ttf':
+        case req.url.match(/\/fonts\/dirt.[0-9a-f]{8}.ttf/g) && req.url.match(/\/fonts\/dirt.[0-9a-f]{8}.ttf/g)[0]:
             res.setHeader('Content-Type', "font/ttf");
             sendFile('dist/fonts/dirt.14fd38ae.ttf', res);
             break;
