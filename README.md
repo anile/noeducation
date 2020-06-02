@@ -1,3 +1,5 @@
+site: https://noeducation.ru/
+
 Noeducation is the service of School community.
 
 The service is created throught vue-cli. Commands:
